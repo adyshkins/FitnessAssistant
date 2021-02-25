@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FitnessAssistant.Windows;
 
 namespace FitnessAssistant
 {
@@ -28,6 +29,29 @@ namespace FitnessAssistant
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void btnSignIn_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtLogin.Text == "champion" && txtPassword.Password == "champion")
+            {
+                UserWindow userWindow = new UserWindow();
+                this.Hide();
+                userWindow.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Ошибка");
+            }
+        }
+
+        private void btnRegistr_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            this.Hide();
+            registrationWindow.ShowDialog();
+            this.Show();
         }
     }
 }

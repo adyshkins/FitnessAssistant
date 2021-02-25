@@ -64,7 +64,8 @@
                         FontSize="18"
                         Margin="0 15 0 0"
                         Width="120"
-                        Height="30"/>
+                        Height="30"
+                        Click="btnSignIn_Click"/>
 
                 <TextBlock Text="Новый пользователь?"
                            HorizontalAlignment="Center"
@@ -81,7 +82,8 @@
                         Height="30"
                         Background="{x:Null}"
                         BorderThickness="0"
-                        Foreground="Blue"/>
+                        Foreground="Blue"
+                        Click="btnRegistr_Click"/>
             </StackPanel>
 
         </Border>
