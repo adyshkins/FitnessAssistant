@@ -26,7 +26,7 @@
                     Background="{x:Null}"
                     BorderThickness="0"
                     Click="btnClose_Click">
-                    <Image Source="IMG/close.jpg" />
+                    <Image Source="close.jpg" />
 
                 </Button>
 
