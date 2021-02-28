@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static FitnessAssistant.EF.AppData;
 
 namespace FitnessAssistant.Windows
 {
@@ -22,6 +23,21 @@ namespace FitnessAssistant.Windows
         public UserWindow()
         {
             InitializeComponent();
+
+            tbUserData.Text += userData.Name;
+
+            tbName.Text = userData.Name;
+            tbGender.Text = Context.Gender.
+                Where(i=> i.IDGender == userData.IDGender).
+                Select(i => i.GenderName).
+                FirstOrDefault();
+            tbAge.Text = userData.Age.ToString();
+            tbHeight.Text = userData.Height.ToString();
+            tbWeight.Text = userData.Weight.ToString();
+            tbBMI.Text += HelperClass.Calculations.
+                GetBMI(userData.Weight.Value, (userData.Height.Value));
+
+
         }
     }
 }

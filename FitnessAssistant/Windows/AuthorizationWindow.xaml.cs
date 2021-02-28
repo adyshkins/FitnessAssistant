@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FitnessAssistant.Windows;
+using static FitnessAssistant.EF.AppData;
 
 namespace FitnessAssistant
 {
@@ -33,8 +34,14 @@ namespace FitnessAssistant
 
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
-            if (txtLogin.Text == "champion" && txtPassword.Password == "champion")
+            var userLog = Context.Users.ToList().
+                Where(i => i.Login == txtLogin.Text && i.Password == txtPassword.Password).
+                FirstOrDefault();
+
+            if (userLog != null)
             {
+                userData = userLog;
+
                 UserWindow userWindow = new UserWindow();
                 this.Hide();
                 userWindow.ShowDialog();
@@ -42,7 +49,7 @@ namespace FitnessAssistant
             }
             else
             {
-                MessageBox.Show("Ошибка");
+                MessageBox.Show("Пользователя с такими данными не существует");
             }
         }
 
