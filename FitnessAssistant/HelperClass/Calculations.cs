@@ -8,7 +8,7 @@ namespace FitnessAssistant.HelperClass
 {
     public class Calculations
     {
-        public static string GetBMI(double wight, double height)
+        public string GetBMI(double wight, double height)
         {
             double bmi = wight / (Math.Pow((height/100), 2));
             if (bmi <= 16)
