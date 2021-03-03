@@ -40,7 +40,7 @@ namespace FitnessAssistant.HelperClass
             }
             else if (bmi > 40)
             {
-                return Math.Round(bmi).ToString() + " Ожирение III степени";  // Была ошибка
+                return Math.Round(bmi).ToString() + " Ожирение III степени";  // Была ошибка (исправил)
             }
             else
             {
