@@ -11,7 +11,7 @@ namespace FitnessAssistant.HelperClass
         public string GetBMI(double wight, double height)
         {
             double bmi = wight / (Math.Pow((height/100), 2));
-            if (bmi <= 16)
+            if (bmi <= 16 && bmi > 0)  // была ошибка
             {
                 return Math.Round(bmi).ToString() + " Выраженный дефицит массы тела";
             }
@@ -37,7 +37,7 @@ namespace FitnessAssistant.HelperClass
             }
             else if (bmi > 40)
             {
-                return bmi.ToString() + " Ожирение III степени";
+                return Math.Round(bmi).ToString() + " Ожирение III степени";  // Была ошибка
             }
             else
             {
