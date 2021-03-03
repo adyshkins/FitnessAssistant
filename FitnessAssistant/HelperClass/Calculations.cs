@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace FitnessAssistant.HelperClass
 {
+    /// <summary>
+    /// Калькулятор индекса массы тела
+    /// </summary>
     public class Calculations
     {
         public string GetBMI(double wight, double height)
