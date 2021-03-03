@@ -34,23 +34,31 @@ namespace FitnessAssistant
 
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
-            var userLog = Context.Users.ToList().
-                Where(i => i.Login == txtLogin.Text && i.Password == txtPassword.Password).
-                FirstOrDefault();
-
-            if (userLog != null)
+            try
             {
-                userData = userLog;
+                var userLog = Context.Users.ToList().
+               Where(i => i.Login == txtLogin.Text && i.Password == txtPassword.Password).
+               FirstOrDefault();
 
-                UserWindow userWindow = new UserWindow();
-                this.Hide();
-                userWindow.ShowDialog();
-                this.Show();
+                if (userLog != null)
+                {
+                    userData = userLog;
+
+                    UserWindow userWindow = new UserWindow();
+                    this.Hide();
+                    userWindow.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Пользователя с такими данными не существует");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Пользователя с такими данными не существует");
+                MessageBox.Show(ex.Message);
             }
+           
         }
 
         private void btnRegistr_Click(object sender, RoutedEventArgs e)

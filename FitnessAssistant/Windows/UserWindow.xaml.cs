@@ -35,9 +35,7 @@ namespace FitnessAssistant.Windows
             tbHeight.Text = userData.Height.ToString();
             tbWeight.Text = userData.Weight.ToString();
 
-            HelperClass.Calculations calculations = new HelperClass.Calculations();
-
-            tbBMI.Text += calculations.
+            tbBMI.Text += HelperClass.Calculations.
                 GetBMI(userData.Weight.Value, (userData.Height.Value));
         }
     }

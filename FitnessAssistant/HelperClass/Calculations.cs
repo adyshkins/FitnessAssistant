@@ -9,12 +9,13 @@ namespace FitnessAssistant.HelperClass
     /// <summary>
     /// Калькулятор индекса массы тела
     /// </summary>
-    public class Calculations
+    public static class Calculations
     {
-        public string GetBMI(double wight, double height)
+        public static string GetBMI(double wight, double height)
         {
             double bmi = wight / (Math.Pow((height/100), 2));
-            if (bmi <= 16 && bmi > 0)  // была ошибка
+
+            if (bmi <= 16 && bmi > 0)  // была ошибка (исправил)
             {
                 return Math.Round(bmi).ToString() + " Выраженный дефицит массы тела";
             }

@@ -15,9 +15,8 @@ namespace FitnessAssistant.Tests
             string ex = "17 Недостаточная масса тела (дефицит)";
 
             // act
-
-            FitnessAssistant.HelperClass.Calculations c = new HelperClass.Calculations();
-            string result = c.GetBMI(w,h);
+                        
+            string result = HelperClass.Calculations.GetBMI(w,h);
 
             // assert
             Assert.AreEqual(ex,result);
@@ -33,8 +32,7 @@ namespace FitnessAssistant.Tests
 
             // act
 
-            FitnessAssistant.HelperClass.Calculations c = new HelperClass.Calculations();
-            string result = c.GetBMI(w, h);
+            string result = HelperClass.Calculations.GetBMI(w, h);
 
             // assert
             Assert.AreEqual(ex, result);
@@ -50,8 +48,7 @@ namespace FitnessAssistant.Tests
 
             // act
 
-            FitnessAssistant.HelperClass.Calculations c = new HelperClass.Calculations();
-            string result = c.GetBMI(w, h);
+            string result = HelperClass.Calculations.GetBMI(w, h);
 
             // assert
             Assert.AreEqual(ex, result);
@@ -67,8 +64,7 @@ namespace FitnessAssistant.Tests
 
             // act
 
-            FitnessAssistant.HelperClass.Calculations c = new HelperClass.Calculations();
-            string result = c.GetBMI(w, h);
+            string result = HelperClass.Calculations.GetBMI(w, h);
 
             // assert
             Assert.AreEqual(ex, result);
@@ -82,10 +78,9 @@ namespace FitnessAssistant.Tests
             double h = 186;
             string ex = "33 Ожирение I степени";
 
-            // act
+            // act        
 
-            FitnessAssistant.HelperClass.Calculations c = new HelperClass.Calculations();
-            string result = c.GetBMI(w, h);
+            string result = HelperClass.Calculations.GetBMI(w, h);
 
             // assert
             Assert.AreEqual(ex, result);
@@ -101,8 +96,7 @@ namespace FitnessAssistant.Tests
 
             // act
 
-            FitnessAssistant.HelperClass.Calculations c = new HelperClass.Calculations();
-            string result = c.GetBMI(w, h);
+            string result = HelperClass.Calculations.GetBMI(w, h);
 
             // assert
             Assert.AreEqual(ex, result);
@@ -118,8 +112,7 @@ namespace FitnessAssistant.Tests
 
             // act
 
-            FitnessAssistant.HelperClass.Calculations c = new HelperClass.Calculations();
-            string result = c.GetBMI(w, h);
+           string result = HelperClass.Calculations.GetBMI(w, h);
 
             // assert
             Assert.AreEqual(ex, result);
@@ -133,10 +126,10 @@ namespace FitnessAssistant.Tests
             double h = -150;
             string ex = "Ошибка при вводе данных";
 
+            
             // act
 
-            FitnessAssistant.HelperClass.Calculations c = new HelperClass.Calculations();
-            string result = c.GetBMI(w, h);
+            string result = HelperClass.Calculations.GetBMI(w, h);
 
             // assert
             Assert.AreEqual(ex, result);
