@@ -28,6 +28,18 @@ namespace FitnessAssistant.Windows
         
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
+            int val;
+            if (!Int32.TryParse(txtHeight.Text, out val) )
+            {
+                MessageBox.Show("Неверный формат данных");
+                return;
+            }
+            if (!Int32.TryParse(txtWeight.Text, out val))
+            {
+                MessageBox.Show("Неверный формат данных");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(txtWeight.Text))
             {
                 MessageBox.Show("Укажите Ваш вес");

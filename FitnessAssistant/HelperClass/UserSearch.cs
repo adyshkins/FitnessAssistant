@@ -9,7 +9,7 @@ namespace FitnessAssistant.HelperClass
     
     public static class UserSearch
     {       
-        public static bool GetUser(string login, string password) // 
+        public static bool GetUser(string login, string password) // проверка авторизации
         {
             var user = FitnessAssistant.EF.AppData.Context.Users.ToList().
                Where(i => i.Login == login && i.Password == password).
@@ -26,7 +26,7 @@ namespace FitnessAssistant.HelperClass
             }            
         }
 
-        public static bool GetUser(string login)
+        public static bool GetUser(string login) // проверка при добавлении нового пользователя
         {
             var user = FitnessAssistant.EF.AppData.Context.Users.ToList().
                Where(i => i.Login == login).

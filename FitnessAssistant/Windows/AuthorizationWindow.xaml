@@ -11,7 +11,7 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
          WindowStyle="None" 
-        Background="#6495ED">
+        Background="#6495ED" KeyDown="Window_KeyDown">
     <Grid>
         <Border Background="White"
                 Margin="20"

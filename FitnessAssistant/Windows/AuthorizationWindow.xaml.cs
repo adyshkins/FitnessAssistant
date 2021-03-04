@@ -26,6 +26,7 @@ namespace FitnessAssistant
         public AuthorizationWindow()
         {
             InitializeComponent();
+            txtLogin.Focus();
         }
        
         private void btnClose_Click(object sender, RoutedEventArgs e) 
@@ -62,6 +63,14 @@ namespace FitnessAssistant
             this.Hide();
             registrationWindow.ShowDialog();
             this.Show();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnSignIn.Focus();
+            }
         }
     }
 }

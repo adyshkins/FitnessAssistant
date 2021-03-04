@@ -124,7 +124,8 @@
                    FontSize="20"
                    Margin="20 0"/>
 
-        <Button Content="Зарегистрироваться" 
+        <Button Name="btnRegistr" 
+                Content="Зарегистрироваться" 
                 Grid.Column="0"
                 Grid.Row="10"
                 Grid.ColumnSpan="3"
@@ -132,7 +133,8 @@
                 VerticalAlignment="Center"
                 FontSize="20"
                 Width="200"
-                Height="40"/>
+                Height="40"
+                Click="btnRegistr_Click"/>
 
         <!-- Средний столбец -->
 
@@ -196,7 +198,8 @@
             <Image x:Name="imgPhotoUser"/>
         </Border>
         
-        <Button Content="Выбрать фото" 
+        <Button x:Name="btnChoosePhoto" 
+                Content="Выбрать фото" 
                 Grid.Column="2"
                 Grid.Row="6"
                 Grid.ColumnSpan="3"
@@ -204,7 +207,8 @@
                 VerticalAlignment="Center"
                 FontSize="20"
                 Width="200"
-                Height="40"/>
+                Height="40"
+                Click="btnChoosePhoto_Click"/>
 
 
 
