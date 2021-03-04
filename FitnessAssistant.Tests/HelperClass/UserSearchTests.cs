@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FitnessAssistant.HelperClass
+namespace FitnessAssistant.Tests.HelperClass
 {
-    class UserJob
+    class UserSearchTests
     {
-        public bool GetUser()
-        {
-            return true;
-        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FitnessAssistant.EF
 {
-    class AppData
+    public class AppData
     {
         public static FitnessAssistantEntities Context { get; } = new FitnessAssistantEntities();
 

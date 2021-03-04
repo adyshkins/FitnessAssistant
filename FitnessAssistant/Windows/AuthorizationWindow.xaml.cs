@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FitnessAssistant.HelperClass;
 using FitnessAssistant.Windows;
 using static FitnessAssistant.EF.AppData;
 
@@ -26,29 +27,18 @@ namespace FitnessAssistant
         {
             InitializeComponent();
         }
-
-        public bool GetUser(string login, string password)
+       
+        private void btnClose_Click(object sender, RoutedEventArgs e) 
         {
-            return true;
-        }
-
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
+            Application.Current.Shutdown(); // выход из приложения
         }
 
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var userLog = Context.Users.ToList().
-               Where(i => i.Login == txtLogin.Text && i.Password == txtPassword.Password).
-               FirstOrDefault();
-
-                if (userLog != null)
+                if (UserSearch.GetUser(txtLogin.Text, txtPassword.Password)) // поиск записи по логину и паролю
                 {
-                    userData = userLog;
-
                     UserWindow userWindow = new UserWindow();
                     this.Hide();
                     userWindow.ShowDialog();
@@ -66,7 +56,7 @@ namespace FitnessAssistant
            
         }
 
-        private void btnRegistr_Click(object sender, RoutedEventArgs e)
+        private void btnRegistr_Click(object sender, RoutedEventArgs e) // преход на страницу регистрации
         {
             RegistrationWindow registrationWindow = new RegistrationWindow();
             this.Hide();

@@ -38,5 +38,11 @@ namespace FitnessAssistant.Windows
             tbBMI.Text += HelperClass.Calculations.
                 GetBMI(userData.Weight.Value, (userData.Height.Value));
         }
+
+        private void btnCalcBMI_Click(object sender, RoutedEventArgs e)
+        {
+            CalcBMIWindow calcBMIWindow = new CalcBMIWindow();
+            calcBMIWindow.ShowDialog();
+        }
     }
 }

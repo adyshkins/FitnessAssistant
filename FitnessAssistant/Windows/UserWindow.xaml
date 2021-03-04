@@ -146,6 +146,17 @@
                    Grid.RowSpan="4"
                    Width="150"
                    Height="175"/>
+
+            
         </Grid>
+        <Button x:Name="btnCalcBMI"
+                Content="BMI Калькулятор "
+                Grid.Row="3"
+                Height="30"
+                Width="150"
+                Margin="30 0"
+                HorizontalAlignment="Right"
+                VerticalContentAlignment="Center"
+                Click="btnCalcBMI_Click"/>
     </Grid>
 </Window>
