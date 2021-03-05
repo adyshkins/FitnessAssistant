@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalculationsTests.cs" />
-    <Compile Include="HelperClass\UserSearchTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserSearchTests.cs" />
   </ItemGroup>
@@ -64,6 +63,9 @@
       <Project>{6205e1d2-87f6-4919-bd2b-3ed7f2635882}</Project>
       <Name>FitnessAssistant</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HelperClass\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

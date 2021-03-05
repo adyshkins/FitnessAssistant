@@ -64,7 +64,7 @@ namespace FitnessAssistant.HelperClass
             {
                 bmr = 0;
             }
-            return bmr;
+            return Math.Round(bmr);
         }
     }
 }

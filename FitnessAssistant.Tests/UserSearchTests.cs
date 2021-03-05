@@ -6,7 +6,7 @@ namespace FitnessAssistant.Tests
     [TestClass]
     public class UserSearchTests
     {        
-        [TestMethod]
+        //[TestMethod]
         public void GetUser_log1andpassw1_falsereturn()
         {
             // // arrange
