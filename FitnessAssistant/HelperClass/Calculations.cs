@@ -13,9 +13,9 @@ namespace FitnessAssistant.HelperClass
     {
         public static string GetBMI(double wight, double height)
         {
-            double bmi = wight / (Math.Pow((height/100), 2));
+            double bmi = wight / (Math.Pow((height / 100), 2));
 
-            if (bmi <= 16 && bmi > 0)  // была ошибка (исправил)
+            if (bmi <= 16 && bmi > 0)
             {
                 return Math.Round(bmi).ToString() + " Выраженный дефицит массы тела";
             }
@@ -41,12 +41,30 @@ namespace FitnessAssistant.HelperClass
             }
             else if (bmi > 40)
             {
-                return Math.Round(bmi).ToString() + " Ожирение III степени";  // Была ошибка (исправил)
+                return Math.Round(bmi).ToString() + " Ожирение III степени";
             }
             else
             {
                 return "Ошибка при вводе данных";
-            }            
+            }
+        }
+
+        public static double GetBMR(int genderId, int height, int weight, int age)
+        {
+            double bmr;
+            if (genderId == 1) // если мужской пол
+            {
+                bmr = 66 + (13.7 * weight) + (5 * height) - (6.8 * age);
+            }
+            else if (genderId == 2) // если женский пол
+            {
+                bmr = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
+            }
+            else // Если что-то пошло не так, вернуть ноль
+            {
+                bmr = 0;
+            }
+            return bmr;
         }
     }
 }

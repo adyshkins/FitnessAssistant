@@ -109,6 +109,9 @@
     <Compile Include="Windows\CalcBMIWindow.xaml.cs">
       <DependentUpon>CalcBMIWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\CalcBMRWindow.xaml.cs">
+      <DependentUpon>CalcBMRWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Windows\CalcBMIWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CalcBMRWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

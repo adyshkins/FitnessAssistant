@@ -44,5 +44,11 @@ namespace FitnessAssistant.Windows
             CalcBMIWindow calcBMIWindow = new CalcBMIWindow();
             calcBMIWindow.ShowDialog();
         }
+
+        private void btnCalcBMR_Click(object sender, RoutedEventArgs e)
+        {
+            CalcBMRWindow calcBMRWindow = new CalcBMRWindow();
+            calcBMRWindow.ShowDialog();
+        }
     }
 }

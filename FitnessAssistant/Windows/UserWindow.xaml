@@ -93,7 +93,16 @@
                        FontSize="20"
                        Margin="20 0"
                        Text="Индекс массы вашего тела равен: "
-                       TextWrapping="Wrap"/>
+                       TextWrapping="Wrap">
+                <TextBlock.ToolTip>
+                    <Border Width="250">
+                        <TextBlock Text="BMI обозначает индекс массы тела. 
+                               Он используется, чтобы дать вам представление о том, является ли Ваш вес- избыточным или идеальным для вашего роста. Это полезно знать, потому что если ваш вес увеличивается или уменьшается за пределами идеального диапазона, у вас повышается риск заболеть."
+                               TextWrapping="Wrap"/>
+                    </Border>
+                    
+                </TextBlock.ToolTip>
+            </TextBlock>
             <!--Правый столбец -->
             <TextBlock x:Name="tbName"
                        Text="Имя"
@@ -149,14 +158,25 @@
 
             
         </Grid>
-        <Button x:Name="btnCalcBMI"
-                Content="BMI Калькулятор "
-                Grid.Row="3"
-                Height="30"
-                Width="150"
-                Margin="30 0"
-                HorizontalAlignment="Right"
-                VerticalContentAlignment="Center"
-                Click="btnCalcBMI_Click"/>
+        <WrapPanel Grid.Row="3" 
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center">
+            <Button x:Name="btnCalcBMI"
+                    Content="BMI Калькулятор "
+                    Height="30"
+                    Width="150"
+                    Margin="30 0" 
+                    Click="btnCalcBMI_Click"
+                    ToolTip="Расчет Индека массы тела"/>
+
+            <Button x:Name="btnCalcBMR"
+                    Content="BMR Калькулятор "
+                    Height="30"
+                    Width="150"
+                    Margin="30 0" 
+                    Click="btnCalcBMR_Click"
+                    ToolTip="Расчет базального (основного) метаболизма"/>
+        </WrapPanel >
+        
     </Grid>
 </Window>

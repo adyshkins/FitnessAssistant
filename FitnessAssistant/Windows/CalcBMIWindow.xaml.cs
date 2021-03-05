@@ -28,18 +28,6 @@ namespace FitnessAssistant.Windows
         
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            int val;
-            if (!Int32.TryParse(txtHeight.Text, out val) )
-            {
-                MessageBox.Show("Неверный формат данных");
-                return;
-            }
-            if (!Int32.TryParse(txtWeight.Text, out val))
-            {
-                MessageBox.Show("Неверный формат данных");
-                return;
-            }
-
             if (string.IsNullOrWhiteSpace(txtWeight.Text))
             {
                 MessageBox.Show("Укажите Ваш вес");
@@ -51,8 +39,17 @@ namespace FitnessAssistant.Windows
                 MessageBox.Show("Укажите Ваш рост");
                 return;
             }
-            
-
+            int val;
+            if (!Int32.TryParse(txtWeight.Text, out val))
+            {
+                MessageBox.Show("Неверный формат данных  в поле Вес");
+                return;
+            }
+            if (!Int32.TryParse(txtHeight.Text, out val) )
+            {
+                MessageBox.Show("Неверный формат данных в поле Рост");
+                return;
+            }
             tbResult.Text = "Результат: ";
             tbResult.Text += Calculations.GetBMI(Int32.Parse(txtWeight.Text), Int32.Parse(txtHeight.Text)); 
         }
