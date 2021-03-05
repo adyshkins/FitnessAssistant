@@ -158,14 +158,21 @@
 
             
         </Grid>
-        <WrapPanel Grid.Row="3" 
+        <WrapPanel Grid.Row="4" 
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center">
+
+            <Button x:Name="btnAdd"
+                    Content="Мои тренировки"
+                    Height="30"
+                    Width="150"
+                    Margin="20 0" />
+
             <Button x:Name="btnCalcBMI"
                     Content="BMI Калькулятор "
                     Height="30"
                     Width="150"
-                    Margin="30 0" 
+                    Margin="20 0" 
                     Click="btnCalcBMI_Click"
                     ToolTip="Расчет Индека массы тела"/>
 
@@ -173,7 +180,7 @@
                     Content="BMR Калькулятор "
                     Height="30"
                     Width="150"
-                    Margin="30 0" 
+                    Margin="20 0" 
                     Click="btnCalcBMR_Click"
                     ToolTip="Расчет базального (основного) метаболизма"/>
         </WrapPanel >
