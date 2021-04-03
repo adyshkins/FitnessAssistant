@@ -22,6 +22,14 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="TypeWorkout">
+          <Key>
+            <PropertyRef Name="IdTypeWorkout" />
+          </Key>
+          <Property Name="IdTypeWorkout" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameTypeWorkout" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CalorieConsumptionRatio" Type="float" Nullable="false" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="ID" />
@@ -36,6 +44,23 @@
           <Property Name="Height" Type="int" />
           <Property Name="Photo" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="UserWorkout">
+          <Key>
+            <PropertyRef Name="IdUserWorkout" />
+          </Key>
+          <Property Name="IdUserWorkout" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdWorkout" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Workout">
+          <Key>
+            <PropertyRef Name="IdWorkout" />
+          </Key>
+          <Property Name="IdWorkout" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTypeWorkout" Type="int" Nullable="false" />
+          <Property Name="DateWorkout" Type="date" Nullable="false" />
+          <Property Name="DurationWorkout" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Users_Gender">
           <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -48,13 +73,95 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserWorkout_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserWorkout" Type="Self.UserWorkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserWorkout">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserWorkout_Workout">
+          <End Role="Workout" Type="Self.Workout" Multiplicity="1" />
+          <End Role="UserWorkout" Type="Self.UserWorkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout">
+              <PropertyRef Name="IdWorkout" />
+            </Principal>
+            <Dependent Role="UserWorkout">
+              <PropertyRef Name="IdWorkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_TypeWorkout">
+          <End Role="TypeWorkout" Type="Self.TypeWorkout" Multiplicity="1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeWorkout">
+              <PropertyRef Name="IdTypeWorkout" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="IdTypeWorkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище FitnessAssistantModelContainer">
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeWorkout" EntityType="Self.TypeWorkout" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserWorkout" EntityType="Self.UserWorkout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workout" EntityType="Self.Workout" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Users_Gender" Association="Self.FK_Users_Gender">
             <End Role="Gender" EntitySet="Gender" />
             <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserWorkout_Users" Association="Self.FK_UserWorkout_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserWorkout" EntitySet="UserWorkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserWorkout_Workout" Association="Self.FK_UserWorkout_Workout">
+            <End Role="Workout" EntitySet="Workout" />
+            <End Role="UserWorkout" EntitySet="UserWorkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_TypeWorkout" Association="Self.FK_Workout_TypeWorkout">
+            <End Role="TypeWorkout" EntitySet="TypeWorkout" />
+            <End Role="Workout" EntitySet="Workout" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -69,6 +176,51 @@
             <End Role="Gender" EntitySet="Gender" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="TypeWorkout" EntityType="FitnessAssistantModel.TypeWorkout" />
+          <EntitySet Name="UserWorkout" EntityType="FitnessAssistantModel.UserWorkout" />
+          <EntitySet Name="Workout" EntityType="FitnessAssistantModel.Workout" />
+          <AssociationSet Name="FK_Workout_TypeWorkout" Association="FitnessAssistantModel.FK_Workout_TypeWorkout">
+            <End Role="TypeWorkout" EntitySet="TypeWorkout" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserWorkout_Users" Association="FitnessAssistantModel.FK_UserWorkout_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserWorkout" EntitySet="UserWorkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserWorkout_Workout" Association="FitnessAssistantModel.FK_UserWorkout_Workout">
+            <End Role="Workout" EntitySet="Workout" />
+            <End Role="UserWorkout" EntitySet="UserWorkout" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(FitnessAssistantModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(FitnessAssistantModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
         <EntityType Name="Gender">
           <Key>
@@ -102,6 +254,7 @@
           <Property Name="Height" Type="Int32" />
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Gender" Relationship="FitnessAssistantModel.FK_Users_Gender" FromRole="Users" ToRole="Gender" />
+          <NavigationProperty Name="UserWorkout" Relationship="FitnessAssistantModel.FK_UserWorkout_Users" FromRole="Users" ToRole="UserWorkout" />
         </EntityType>
         <Association Name="FK_Users_Gender">
           <End Type="FitnessAssistantModel.Gender" Role="Gender" Multiplicity="0..1" />
@@ -115,6 +268,83 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TypeWorkout">
+          <Key>
+            <PropertyRef Name="IdTypeWorkout" />
+          </Key>
+          <Property Name="IdTypeWorkout" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameTypeWorkout" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CalorieConsumptionRatio" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Workout" Relationship="FitnessAssistantModel.FK_Workout_TypeWorkout" FromRole="TypeWorkout" ToRole="Workout" />
+        </EntityType>
+        <EntityType Name="UserWorkout">
+          <Key>
+            <PropertyRef Name="IdUserWorkout" />
+          </Key>
+          <Property Name="IdUserWorkout" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdWorkout" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="FitnessAssistantModel.FK_UserWorkout_Users" FromRole="UserWorkout" ToRole="Users" />
+          <NavigationProperty Name="Workout" Relationship="FitnessAssistantModel.FK_UserWorkout_Workout" FromRole="UserWorkout" ToRole="Workout" />
+        </EntityType>
+        <EntityType Name="Workout">
+          <Key>
+            <PropertyRef Name="IdWorkout" />
+          </Key>
+          <Property Name="IdWorkout" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTypeWorkout" Type="Int32" Nullable="false" />
+          <Property Name="DateWorkout" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DurationWorkout" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TypeWorkout" Relationship="FitnessAssistantModel.FK_Workout_TypeWorkout" FromRole="Workout" ToRole="TypeWorkout" />
+          <NavigationProperty Name="UserWorkout" Relationship="FitnessAssistantModel.FK_UserWorkout_Workout" FromRole="Workout" ToRole="UserWorkout" />
+        </EntityType>
+        <Association Name="FK_Workout_TypeWorkout">
+          <End Type="FitnessAssistantModel.TypeWorkout" Role="TypeWorkout" Multiplicity="1" />
+          <End Type="FitnessAssistantModel.Workout" Role="Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeWorkout">
+              <PropertyRef Name="IdTypeWorkout" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="IdTypeWorkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserWorkout_Users">
+          <End Type="FitnessAssistantModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="FitnessAssistantModel.UserWorkout" Role="UserWorkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserWorkout">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserWorkout_Workout">
+          <End Type="FitnessAssistantModel.Workout" Role="Workout" Multiplicity="1" />
+          <End Type="FitnessAssistantModel.UserWorkout" Role="UserWorkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout">
+              <PropertyRef Name="IdWorkout" />
+            </Principal>
+            <Dependent Role="UserWorkout">
+              <PropertyRef Name="IdWorkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -155,6 +385,58 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TypeWorkout">
+            <EntityTypeMapping TypeName="FitnessAssistantModel.TypeWorkout">
+              <MappingFragment StoreEntitySet="TypeWorkout">
+                <ScalarProperty Name="CalorieConsumptionRatio" ColumnName="CalorieConsumptionRatio" />
+                <ScalarProperty Name="NameTypeWorkout" ColumnName="NameTypeWorkout" />
+                <ScalarProperty Name="IdTypeWorkout" ColumnName="IdTypeWorkout" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserWorkout">
+            <EntityTypeMapping TypeName="FitnessAssistantModel.UserWorkout">
+              <MappingFragment StoreEntitySet="UserWorkout">
+                <ScalarProperty Name="IdWorkout" ColumnName="IdWorkout" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdUserWorkout" ColumnName="IdUserWorkout" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workout">
+            <EntityTypeMapping TypeName="FitnessAssistantModel.Workout">
+              <MappingFragment StoreEntitySet="Workout">
+                <ScalarProperty Name="DurationWorkout" ColumnName="DurationWorkout" />
+                <ScalarProperty Name="DateWorkout" ColumnName="DateWorkout" />
+                <ScalarProperty Name="IdTypeWorkout" ColumnName="IdTypeWorkout" />
+                <ScalarProperty Name="IdWorkout" ColumnName="IdWorkout" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище FitnessAssistantModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище FitnessAssistantModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище FitnessAssistantModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище FitnessAssistantModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FitnessAssistantModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище FitnessAssistantModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FitnessAssistantModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище FitnessAssistantModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище FitnessAssistantModel.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

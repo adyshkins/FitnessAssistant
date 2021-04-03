@@ -12,25 +12,20 @@ namespace FitnessAssistant.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class Workout
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
+        public Workout()
         {
             this.UserWorkout = new HashSet<UserWorkout>();
         }
     
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public Nullable<int> IDGender { get; set; }
-        public Nullable<int> Age { get; set; }
-        public Nullable<int> Weight { get; set; }
-        public Nullable<int> Height { get; set; }
-        public byte[] Photo { get; set; }
-    
-        public virtual Gender Gender { get; set; }
+        public int IdWorkout { get; set; }
+        public int IdTypeWorkout { get; set; }
+        public System.DateTime DateWorkout { get; set; }
+        public int DurationWorkout { get; set; }
+
+        public virtual TypeWorkout TypeWorkout { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserWorkout> UserWorkout { get; set; }
     }

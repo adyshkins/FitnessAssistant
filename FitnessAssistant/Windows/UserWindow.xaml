@@ -14,6 +14,7 @@
             <RowDefinition Height="8*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Ваши данные"
                    VerticalAlignment="Center"
@@ -166,7 +167,8 @@
                     Content="Мои тренировки"
                     Height="30"
                     Width="150"
-                    Margin="20 0" />
+                    Margin="20 0" 
+                    Click="btnAdd_Click"/>
 
             <Button x:Name="btnCalcBMI"
                     Content="BMI Калькулятор "

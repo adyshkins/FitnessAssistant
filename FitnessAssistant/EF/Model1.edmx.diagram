@@ -9,6 +9,12 @@
         <EntityTypeShape EntityType="FitnessAssistantModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="FitnessAssistantModel.Users" Width="1.5" PointX="3" PointY="1" />
         <AssociationConnector Association="FitnessAssistantModel.FK_Users_Gender" />
+        <EntityTypeShape EntityType="FitnessAssistantModel.TypeWorkout" Width="1.5" PointX="5.375" PointY="1.125" />
+        <EntityTypeShape EntityType="FitnessAssistantModel.UserWorkout" Width="1.5" PointX="9.875" PointY="1.5" />
+        <EntityTypeShape EntityType="FitnessAssistantModel.Workout" Width="1.5" PointX="7.625" PointY="0.875" />
+        <AssociationConnector Association="FitnessAssistantModel.FK_Workout_TypeWorkout" />
+        <AssociationConnector Association="FitnessAssistantModel.FK_UserWorkout_Users" />
+        <AssociationConnector Association="FitnessAssistantModel.FK_UserWorkout_Workout" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

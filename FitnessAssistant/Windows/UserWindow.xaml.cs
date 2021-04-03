@@ -50,5 +50,12 @@ namespace FitnessAssistant.Windows
             CalcBMRWindow calcBMRWindow = new CalcBMRWindow();
             calcBMRWindow.ShowDialog();
         }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            MyWorkoutsWindow workoutsWindow = new MyWorkoutsWindow();
+
+            workoutsWindow.ShowDialog();
+        }
     }
 }
