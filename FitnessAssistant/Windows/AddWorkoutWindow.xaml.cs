@@ -27,7 +27,7 @@ namespace FitnessAssistant.Windows
             cmbTypeWorkout.DisplayMemberPath = "NameTypeWorkout";
             cmbTypeWorkout.SelectedIndex = 0;
 
-            txtDateWorkout.SelectedDate = DateTime.Now;
+            dpDateWorkout.SelectedDate = DateTime.Now;
         }
 
         private void txtDurationWorkout_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -41,7 +41,25 @@ namespace FitnessAssistant.Windows
 
         private void btnAddWorkout_Click(object sender, RoutedEventArgs e)
         {
+            var result = MessageBox.Show("Добавить новую тренировку?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Information);
+            if (result == MessageBoxResult.Yes)
+            {
+                EF.UserWorkout userWorkout = new EF.UserWorkout();
 
+                userWorkout.IdUser = EF.AppData.userData.ID;
+                userWorkout.DateWorkout = dpDateWorkout.DisplayDate;
+                userWorkout.DurationWorkout = Int32.Parse(txtDurationWorkout.Text);
+                userWorkout.IdTypeWorkout = cmbTypeWorkout.SelectedIndex + 1;
+
+
+                Context.UserWorkout.Add(userWorkout);
+
+                Context.SaveChanges();
+
+                MessageBox.Show("Новая тренировка добавлена");
+                this.Close();
+            }
+            
         }
     }
 }

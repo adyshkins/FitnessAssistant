@@ -26,10 +26,10 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Имя пользователя" DisplayMemberBinding="{Binding Users.Name}"/>
-                    <GridViewColumn Header="Вид тренировки" DisplayMemberBinding="{Binding Workout.TypeWorkout.NameTypeWorkout}"/>
-                    <GridViewColumn Header="Дата тренировки" DisplayMemberBinding="{Binding Workout.DateWorkout}"/>
-                    <GridViewColumn Header="Длительность тренировки" DisplayMemberBinding="{Binding Workout.DurationWorkout}"/>
-                    <GridViewColumn Header="Количество потраченных калорий" DisplayMemberBinding="{Binding GetCountSalories}"/>                    
+                    <GridViewColumn Header="Вид тренировки" DisplayMemberBinding="{Binding TypeWorkout.NameTypeWorkout}"/>
+                    <GridViewColumn Header="Дата тренировки" DisplayMemberBinding="{Binding DateWorkout}"/>
+                    <GridViewColumn Header="Длительность тренировки" DisplayMemberBinding="{Binding DurationWorkout}"/>
+                    <GridViewColumn Header="Количество потраченных калорий" DisplayMemberBinding="{Binding GetCountCalories}"/>                    
                 </GridView>
             </ListView.View>
         </ListView>

@@ -116,9 +116,6 @@
     <Compile Include="EF\UserWorkout.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\Workout.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="HelperClass\Calculations.cs" />
     <Compile Include="HelperClass\UserSearch.cs" />
     <Compile Include="HelperClass\UserWorkout.cs" />

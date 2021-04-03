@@ -197,5 +197,78 @@ namespace FitnessAssistant.Tests
         }
 
 
+        // Блок тестов для рассчета потраченных калорий
+        [TestMethod]
+        public void GetCountCalories_17and60and54_918returned()
+        {
+            // arrange
+            double calorieConsumptionRatio = 17;
+            int durationWorkout = 60;
+            int wight = 54;
+
+            double ex = 918;
+
+            // act
+
+            double result = FitnessAssistant.HelperClass.Calculations.GetCountCalories(calorieConsumptionRatio, durationWorkout, wight);
+
+            // assert
+            Assert.AreEqual(ex, result);
+        }
+
+
+        [TestMethod]
+        public void GetCountCalories_15and120and54_1620returned()
+        {
+            // arrange
+            double calorieConsumptionRatio = 15;
+            int durationWorkout = 120;
+            int wight = 54;
+
+            double ex = 1620;
+
+            // act
+
+            double result = FitnessAssistant.HelperClass.Calculations.GetCountCalories(calorieConsumptionRatio, durationWorkout, wight);
+
+            // assert
+            Assert.AreEqual(ex, result);
+        }
+
+        [TestMethod]
+        public void GetCountCalories_11and30and54_297returned()
+        {
+            // arrange
+            double calorieConsumptionRatio = 11;
+            int durationWorkout = 30;
+            int wight = 54;
+
+            double ex = 297;
+
+            // act
+
+            double result = FitnessAssistant.HelperClass.Calculations.GetCountCalories(calorieConsumptionRatio, durationWorkout, wight);
+
+            // assert
+            Assert.AreEqual(ex, result);
+        }
+
+        [TestMethod]
+        public void GetCountCalories_0and0and0_0returned()
+        {
+            // arrange
+            double calorieConsumptionRatio = 0;
+            int durationWorkout = 0;
+            int wight = 0;
+
+            double ex = 0;
+
+            // act
+
+            double result = FitnessAssistant.HelperClass.Calculations.GetCountCalories(calorieConsumptionRatio, durationWorkout, wight);
+
+            // assert
+            Assert.AreEqual(ex, result);
+        }
     }
 }

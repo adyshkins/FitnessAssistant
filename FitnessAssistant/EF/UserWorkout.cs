@@ -16,9 +16,11 @@ namespace FitnessAssistant.EF
     {
         public int IdUserWorkout { get; set; }
         public int IdUser { get; set; }
-        public int IdWorkout { get; set; }
+        public Nullable<System.DateTime> DateWorkout { get; set; }
+        public Nullable<int> DurationWorkout { get; set; }
+        public Nullable<int> IdTypeWorkout { get; set; }
     
+        public virtual TypeWorkout TypeWorkout { get; set; }
         public virtual Users Users { get; set; }
-        public virtual Workout Workout { get; set; }
     }
 }

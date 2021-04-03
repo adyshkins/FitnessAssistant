@@ -17,7 +17,7 @@ namespace FitnessAssistant.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TypeWorkout()
         {
-            this.Workout = new HashSet<Workout>();
+            this.UserWorkout = new HashSet<UserWorkout>();
         }
     
         public int IdTypeWorkout { get; set; }
@@ -25,6 +25,6 @@ namespace FitnessAssistant.EF
         public double CalorieConsumptionRatio { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Workout> Workout { get; set; }
+        public virtual ICollection<UserWorkout> UserWorkout { get; set; }
     }
 }

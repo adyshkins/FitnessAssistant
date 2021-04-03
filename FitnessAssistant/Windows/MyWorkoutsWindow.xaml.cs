@@ -32,6 +32,8 @@ namespace FitnessAssistant.Windows
             AddWorkoutWindow addWorkoutWindow = new AddWorkoutWindow();
             this.Opacity = 0.6;
             addWorkoutWindow.ShowDialog();
+            lvWorkouts.ItemsSource = Context.UserWorkout.Where(i => i.IdUser == userData.ID).ToList();
+
             this.Opacity = 1;
         }
     }

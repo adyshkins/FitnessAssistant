@@ -10,13 +10,14 @@ namespace FitnessAssistant.EF
     {
         // для подчета потраченных калорий будем использовать формулу
         // коэф тренировки * длительность тренировки / 60 * массу тела
-        public string GetCountSalories
+        public string GetCountCalories
         {
             get
             {
-                return $"{(Workout.TypeWorkout.CalorieConsumptionRatio * Workout.DurationWorkout / 60 * Users.Weight).ToString()}";
+                return (HelperClass.Calculations.GetCountCalories(TypeWorkout.CalorieConsumptionRatio, Convert.ToInt32(DurationWorkout), Convert.ToInt32(Users.Weight)).ToString());
+               
             }
         }
     }
 }
-//
+

@@ -66,5 +66,23 @@ namespace FitnessAssistant.HelperClass
             }
             return Math.Round(bmr);
         }
+
+        // для подчета потраченных калорий будем использовать формулу
+        // коэф тренировки * длительность тренировки / 60 * массу тела
+
+        public static double GetCountCalories(double calorieConsumptionRatio, int durationWorkout, int wight)
+        {
+            if (calorieConsumptionRatio > 0 && durationWorkout > 0 && wight > 0)
+            {
+                return calorieConsumptionRatio * durationWorkout / 60 * wight;
+            }
+            else
+            {
+                return 0;
+            }
+           
+        }
+
+        
     }
 }

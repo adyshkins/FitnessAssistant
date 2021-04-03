@@ -39,7 +39,7 @@
                            FontSize="18"
                            Margin="0 15 0 0"/>
 
-                <DatePicker x:Name="txtDateWorkout"
+                <DatePicker x:Name="dpDateWorkout"
                              HorizontalAlignment="Center"
                              FontSize="15"
                              Margin="0 15 0 0"
